@@ -592,6 +592,64 @@
     }
     .msg-bubble li { margin-bottom: .2em; }
 
+
+    /* =============================================
+       CHAT FLOTANTE
+    ============================================= */
+    .chat-widget { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 150; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
+
+    .chat-fab {
+      display: inline-flex; align-items: center; gap: .55rem;
+      height: 56px; padding: 0 1.2rem;
+      border: none; border-radius: var(--radius-pill);
+      background: var(--accent); color: var(--text-inv);
+      font-family: inherit; font-size: .92rem; font-weight: 600;
+      cursor: pointer; box-shadow: 0 6px 24px rgba(91,79,207,.4);
+      transition: transform var(--transition), background var(--transition);
+    }
+    .chat-fab:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .chat-fab:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .chat-panel {
+      display: none; flex-direction: column;
+      width: 380px; max-width: calc(100vw - 2.5rem);
+      height: 560px; max-height: calc(100vh - 7.5rem);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow-md);
+      overflow: hidden; padding: 0; border-top: 1px solid var(--border);
+    }
+    .chat-panel.open { display: flex; animation: chatPop .22s ease; }
+    .chat-panel[hidden] { display: none; }
+    @keyframes chatPop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .chat-panel.open { animation: none; } }
+
+    .chat-panel-header {
+      display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+      padding: .8rem 1rem; background: var(--accent); color: var(--text-inv); flex-shrink: 0;
+    }
+    .chat-panel-title { display: flex; align-items: center; gap: .65rem; }
+    .chat-panel-title h2 { font-size: .95rem; font-weight: 700; line-height: 1.2; }
+    .chat-panel-title p { font-size: .76rem; opacity: .85; }
+    .chat-panel-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .chat-panel-close { background: none; border: none; color: inherit; cursor: pointer; padding: .3rem; border-radius: var(--radius-sm); display: flex; }
+    .chat-panel-close:hover { background: rgba(255,255,255,.18); }
+    .chat-panel-close:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+    .chat-panel .api-panel { margin-bottom: 0; border-radius: 0; border-width: 0 0 1px 0; flex-shrink: 0; }
+    .chat-panel .api-panel-toggle { padding: .65rem 1rem; font-size: .8rem; }
+    .chat-panel .api-panel-body { padding: .8rem 1rem 1rem; }
+    .chat-panel .chat-box { flex: 1; min-height: 0; height: auto; border: none; border-radius: 0; box-shadow: none; }
+    .chat-panel .chat-messages { padding: .9rem; }
+    .chat-panel .chat-input-area { padding: .7rem .8rem; }
+    .chat-panel .msg { max-width: 92%; }
+
+    @media (max-width: 520px) {
+      .chat-widget { right: .75rem; bottom: .75rem; }
+      .chat-panel { width: calc(100vw - 1.5rem); max-width: none; height: calc(100vh - 6.5rem); }
+      .fab-label { display: none; }
+      .chat-fab { width: 56px; padding: 0; justify-content: center; }
+    }
+
     /* =============================================
        FOOTER
     ============================================= */
@@ -1057,6 +1115,23 @@
       color: var(--accent);
     }
 
+
+    /* Habilidades: vídeo a la izquierda, listas a la derecha */
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .skills-layout .section-video {
+      max-width: none;
+      margin-bottom: 0;
+    }
+    .skills-layout .skills-group + .skills-group { margin-top: 1.5rem; }
+    @media (min-width: 800px) {
+      .skills-layout { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
     /* =============================================
        LANGUAGES
     ============================================= */
@@ -1430,58 +1505,61 @@
         Habilidades
       </h2>
 
-      <div class="section-video reveal">
-        <article class="video-card">
-          <video
-            controls
-            preload="metadata"
-            aria-label="Vídeo: Habilidades y motivación en IA — Mariela Rivero Montiel"
-          >
-            <source src="videos/habilidades.mp4" type="video/mp4" />
-            Tu navegador no soporta vídeo HTML5.
-          </video>
-          <div class="video-card-body">
-            <p class="video-card-title">Habilidades y motivación en IA</p>
-            <p class="video-card-desc">Por qué me apasiona la inteligencia artificial</p>
-          </div>
-        </article>
-      </div>
-
-
-      <div class="skills-group reveal">
-        <p class="skills-group-title">Técnicas</p>
-        <div class="chips" role="list">
-          <span class="chip chip-accent" role="listitem">Python <small>(básico)</small></span>
-          <span class="chip chip-accent" role="listitem">Java <small>(básico)</small></span>
-          <span class="chip chip-accent" role="listitem">RStudio <small>(medio)</small></span>
-          <span class="chip" role="listitem">IA Generativa</span>
-          <span class="chip" role="listitem">Machine Learning</span>
-          <span class="chip" role="listitem">Deep Learning</span>
-          <span class="chip" role="listitem">Google Antigravity</span>
-          <span class="chip" role="listitem">Power BI</span>
-          <span class="chip" role="listitem">Tableau</span>
-          <span class="chip" role="listitem">Excel</span>
-          <span class="chip" role="listitem">PowerPoint</span>
-          <span class="chip" role="listitem">Word</span>
-          <span class="chip" role="listitem">Outlook</span>
-          <span class="chip" role="listitem">Google Search Console</span>
-          <span class="chip" role="listitem">SE Ranking</span>
+      <div class="skills-layout">
+        <div class="section-video reveal">
+          <article class="video-card">
+            <video
+              controls
+              preload="metadata"
+              aria-label="Vídeo: Habilidades y motivación en IA — Mariela Rivero Montiel"
+            >
+              <source src="videos/habilidades.mp4" type="video/mp4" />
+              Tu navegador no soporta vídeo HTML5.
+            </video>
+            <div class="video-card-body">
+              <p class="video-card-title">Habilidades y motivación en IA</p>
+              <p class="video-card-desc">Por qué me apasiona la inteligencia artificial</p>
+            </div>
+          </article>
         </div>
-      </div>
 
-      <div class="skills-group reveal">
-        <p class="skills-group-title">Blandas</p>
-        <div class="chips" role="list">
-          <span class="chip" role="listitem">Análisis crítico</span>
-          <span class="chip" role="listitem">Análisis de experiencia de usuario</span>
-          <span class="chip" role="listitem">Resolución de problemas</span>
-          <span class="chip" role="listitem">Trabajo en equipo</span>
-          <span class="chip" role="listitem">Gestión de proyectos</span>
-          <span class="chip" role="listitem">Flexibilidad</span>
-          <span class="chip" role="listitem">Adaptabilidad</span>
-          <span class="chip" role="listitem">Puntualidad</span>
-          <span class="chip" role="listitem">Asertividad</span>
-          <span class="chip" role="listitem">Cortesía</span>
+        <div class="skills-lists">
+        <div class="skills-group reveal">
+          <p class="skills-group-title">Técnicas</p>
+          <div class="chips" role="list">
+            <span class="chip chip-accent" role="listitem">Python <small>(básico)</small></span>
+            <span class="chip chip-accent" role="listitem">Java <small>(básico)</small></span>
+            <span class="chip chip-accent" role="listitem">RStudio <small>(medio)</small></span>
+            <span class="chip" role="listitem">IA Generativa</span>
+            <span class="chip" role="listitem">Machine Learning</span>
+            <span class="chip" role="listitem">Deep Learning</span>
+            <span class="chip" role="listitem">Google Antigravity</span>
+            <span class="chip" role="listitem">Power BI</span>
+            <span class="chip" role="listitem">Tableau</span>
+            <span class="chip" role="listitem">Excel</span>
+            <span class="chip" role="listitem">PowerPoint</span>
+            <span class="chip" role="listitem">Word</span>
+            <span class="chip" role="listitem">Outlook</span>
+            <span class="chip" role="listitem">Google Search Console</span>
+            <span class="chip" role="listitem">SE Ranking</span>
+          </div>
+        </div>
+
+        <div class="skills-group reveal">
+          <p class="skills-group-title">Blandas</p>
+          <div class="chips" role="list">
+            <span class="chip" role="listitem">Análisis crítico</span>
+            <span class="chip" role="listitem">Análisis de experiencia de usuario</span>
+            <span class="chip" role="listitem">Resolución de problemas</span>
+            <span class="chip" role="listitem">Trabajo en equipo</span>
+            <span class="chip" role="listitem">Gestión de proyectos</span>
+            <span class="chip" role="listitem">Flexibilidad</span>
+            <span class="chip" role="listitem">Adaptabilidad</span>
+            <span class="chip" role="listitem">Puntualidad</span>
+            <span class="chip" role="listitem">Asertividad</span>
+            <span class="chip" role="listitem">Cortesía</span>
+          </div>
+        </div>
         </div>
       </div>
 
@@ -1519,17 +1597,29 @@
     </div>
   </section>
 
-  <!-- =============================================
-       CHAT SECTION
-  ============================================= -->
-  <section id="chat" aria-labelledby="chat-heading">
-    <div class="container">
-      <h2 class="section-title" id="chat-heading">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Pregúntame lo que quieras
-      </h2>
 
-      <div class="chat-wrapper">
+</main>
+
+<!-- =============================================
+     CHAT FLOTANTE (pop-up esquina inferior derecha)
+============================================= -->
+<div class="chat-widget">
+  <section class="chat-panel" id="chat" aria-labelledby="chat-heading" aria-hidden="true" hidden>
+    <div class="chat-panel-header">
+      <div class="chat-panel-title">
+        <span class="chat-panel-avatar" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <div>
+          <h2 id="chat-heading">Asistente de Mariela</h2>
+          <p>Pregúntame sobre su CV</p>
+        </div>
+      </div>
+      <button class="chat-panel-close" id="chat-close" type="button" aria-label="Cerrar chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
 
         <!-- API Key Panel -->
         <div class="api-panel" role="region" aria-label="Configuración de API Key">
@@ -1615,11 +1705,15 @@
           </div>
         </div>
 
-      </div><!-- .chat-wrapper -->
-    </div>
+      
   </section>
 
-</main>
+  <button class="chat-fab" id="chat-fab" type="button" aria-label="Abrir chat con el asistente de IA" aria-expanded="false" aria-controls="chat">
+    <svg class="fab-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="fab-label">Pregúntame</span>
+  </button>
+</div>
+
 
 <!-- =============================================
      FOOTER
@@ -1678,7 +1772,7 @@
   });
 
   /* ------ Active nav link on scroll ------ */
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('main section[id]');
   const navLinks  = document.querySelectorAll('.nav-links a');
 
   function setActiveLink() {
@@ -2154,6 +2248,51 @@ PERFIL: ${PERFIL}`;
 
   init();
 
+})();
+</script>
+
+<!-- =============================================
+     CHAT FLOTANTE: abrir / cerrar
+============================================= -->
+<script>
+(function () {
+  'use strict';
+  const fab   = document.getElementById('chat-fab');
+  const panel = document.getElementById('chat');
+  const close = document.getElementById('chat-close');
+  const input = document.getElementById('chat-input');
+  if (!fab || !panel) return;
+
+  function openChat() {
+    panel.hidden = false;
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    fab.setAttribute('aria-expanded', 'true');
+    fab.setAttribute('aria-label', 'Cerrar chat con el asistente de IA');
+    if (input) setTimeout(() => input.focus(), 50);
+    const msgs = document.getElementById('chat-messages');
+    if (msgs) msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function closeChat() {
+    panel.classList.remove('open');
+    panel.hidden = true;
+    panel.setAttribute('aria-hidden', 'true');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.setAttribute('aria-label', 'Abrir chat con el asistente de IA');
+  }
+
+  fab.addEventListener('click', () => panel.classList.contains('open') ? closeChat() : openChat());
+  if (close) close.addEventListener('click', () => { closeChat(); fab.focus(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) { closeChat(); fab.focus(); }
+  });
+
+  // Cualquier enlace a #chat (menú, "Ir al chat") abre el pop-up
+  document.querySelectorAll('a[href="#chat"]').forEach(a => {
+    a.addEventListener('click', (e) => { e.preventDefault(); openChat(); });
+  });
 })();
 </script>
 
