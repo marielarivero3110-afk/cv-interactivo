@@ -267,6 +267,13 @@
       color: var(--text-muted);
     }
 
+
+    /* Video inside a section */
+    .section-video {
+      max-width: 640px;
+      margin-bottom: 2rem;
+    }
+
     /* =============================================
        CHAT SECTION
     ============================================= */
@@ -1118,7 +1125,6 @@
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#idiomas">Idiomas</a></li>
-      <li><a href="#videos">Vídeos</a></li>
       <li><a href="#chat">Chat IA</a></li>
     </ul>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-drawer" type="button">
@@ -1140,7 +1146,6 @@
     <a href="#proyectos" class="nav-drawer-link">Proyectos</a>
     <a href="#habilidades" class="nav-drawer-link">Habilidades</a>
     <a href="#idiomas" class="nav-drawer-link">Idiomas</a>
-    <a href="#videos" class="nav-drawer-link">Vídeos</a>
     <a href="#chat" class="nav-drawer-link">Chat IA</a>
   </div>
 </div>
@@ -1207,6 +1212,24 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Sobre mí
       </h2>
+
+      <div class="section-video reveal">
+        <article class="video-card">
+          <video
+            controls
+            preload="metadata"
+            aria-label="Vídeo: Quién soy — Mariela Rivero Montiel"
+          >
+            <source src="videos/pitch.mp4" type="video/mp4" />
+            Tu navegador no soporta vídeo HTML5.
+          </video>
+          <div class="video-card-body">
+            <p class="video-card-title">Quién soy</p>
+            <p class="video-card-desc">Una presentación personal directa y cercana</p>
+          </div>
+        </article>
+      </div>
+
       <p class="about-text reveal">
         Estudiante de <strong>Digital Business y Data Science</strong>, interesada en aplicar el análisis de datos para optimizar estrategias de marketing y negocio. Perfil proactivo, comprometido y orientado a la innovación, con enfoque en la toma de decisiones basada en datos y la creación de valor para las organizaciones. Se inclina hacia roles de <strong>análisis e insights</strong> (analista de datos, CRM, investigación de mercado).
       </p>
@@ -1339,6 +1362,24 @@
         Proyectos
       </h2>
 
+      <div class="section-video reveal">
+        <article class="video-card">
+          <video
+            controls
+            preload="metadata"
+            aria-label="Vídeo: Proyecto destacado — Mariela Rivero Montiel"
+          >
+            <source src="videos/proyecto.mp4" type="video/mp4" />
+            Tu navegador no soporta vídeo HTML5.
+          </video>
+          <div class="video-card-body">
+            <p class="video-card-title">Proyecto destacado</p>
+            <p class="video-card-desc">El CRM de Sweet Space Museum</p>
+          </div>
+        </article>
+      </div>
+
+
       <div class="projects-grid">
 
         <article class="project-card reveal reveal-delay-1">
@@ -1388,6 +1429,24 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         Habilidades
       </h2>
+
+      <div class="section-video reveal">
+        <article class="video-card">
+          <video
+            controls
+            preload="metadata"
+            aria-label="Vídeo: Habilidades y motivación en IA — Mariela Rivero Montiel"
+          >
+            <source src="videos/habilidades.mp4" type="video/mp4" />
+            Tu navegador no soporta vídeo HTML5.
+          </video>
+          <div class="video-card-body">
+            <p class="video-card-title">Habilidades y motivación en IA</p>
+            <p class="video-card-desc">Por qué me apasiona la inteligencia artificial</p>
+          </div>
+        </article>
+      </div>
+
 
       <div class="skills-group reveal">
         <p class="skills-group-title">Técnicas</p>
@@ -1457,67 +1516,6 @@
         </article>
       </div>
 
-    </div>
-  </section>
-
-  <!-- =============================================
-       VÍDEOS
-  ============================================= -->
-  <section id="videos" aria-labelledby="videos-heading">
-    <div class="container">
-      <h2 class="section-title" id="videos-heading">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><path d="m22 8-6 4 6 4V8z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
-        Conóceme en 90 segundos
-      </h2>
-
-      <div class="video-grid">
-
-        <article class="video-card">
-          <video
-            controls
-            preload="metadata"
-            aria-label="Vídeo: Quién soy — Mariela Rivero Montiel"
-          >
-            <source src="videos/pitch.mp4" type="video/mp4" />
-            Tu navegador no soporta vídeo HTML5.
-          </video>
-          <div class="video-card-body">
-            <p class="video-card-title">Quién soy</p>
-            <p class="video-card-desc">Una presentación personal directa y cercana</p>
-          </div>
-        </article>
-
-        <article class="video-card">
-          <video
-            controls
-            preload="metadata"
-            aria-label="Vídeo: Proyecto destacado — Mariela Rivero Montiel"
-          >
-            <source src="videos/proyecto.mp4" type="video/mp4" />
-            Tu navegador no soporta vídeo HTML5.
-          </video>
-          <div class="video-card-body">
-            <p class="video-card-title">Proyecto destacado</p>
-            <p class="video-card-desc">El trabajo del que más orgullosa me siento</p>
-          </div>
-        </article>
-
-        <article class="video-card">
-          <video
-            controls
-            preload="metadata"
-            aria-label="Vídeo: Habilidades y motivación en IA — Mariela Rivero Montiel"
-          >
-            <source src="videos/habilidades.mp4" type="video/mp4" />
-            Tu navegador no soporta vídeo HTML5.
-          </video>
-          <div class="video-card-body">
-            <p class="video-card-title">Habilidades y motivación en IA</p>
-            <p class="video-card-desc">Por qué me apasiona la inteligencia artificial</p>
-          </div>
-        </article>
-
-      </div>
     </div>
   </section>
 
